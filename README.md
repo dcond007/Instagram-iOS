@@ -23,4 +23,4 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/dcond007/Instagram-iOS/blob/main/Instagram_Part1.gif' width='300' alt='Video Walkthrough' />
+<img src='https://github.com/dcond007/Instagram-iOS/blob/main/Insta_Part1.gif' width='300' alt='Video Walkthrough' />

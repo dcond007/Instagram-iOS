@@ -23,20 +23,20 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func onPostImage(_ sender: Any) {
-        let post = PFObject(className: "Pets")
+        let post = PFObject(className: "Posts")
         
         post["author"] = PFUser.current()!
         post["caption"] = commentTextView.text!
         
         let imageData = placeholderImageView.image!.pngData()
-        let file = PFFileObject(data: imageData!)
+        let file = PFFileObject(name: "image.png", data: imageData!)
         
         post["image"] = file
         
         post.saveInBackground { (success, error) in
             if success {
                 self.dismiss(animated: true, completion: nil)
-                print("image posed")
+                print("image posted")
             } else {
                 self.view.makeToast("Error with posting image")
                 print ("Error")
@@ -62,7 +62,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let image = info[.editedImage] as! UIImage
         
         let size = CGSize(width: 300, height: 300)
-        let scaledImage = image.af.imageScaled(to: size)
+        let scaledImage = image.af.imageAspectScaled(toFill: size, scale: 1)
         
         placeholderImageView.image = scaledImage
         
